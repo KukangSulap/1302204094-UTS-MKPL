@@ -14,7 +14,7 @@ public class Employee {
 	private String spouseName, spouseIdNumber;
 	private List<String> childNames, childIdNumbers;
 	
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
+	public Employee(Employee employee) {
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -55,12 +55,12 @@ public class Employee {
 			monthlySalary = (int) (monthlySalary * 1.5);
 		}
 	}
-	
-	public void setAnnualDeductible(int deductible) {	
+
+	public void setAnnualDeductible(int deductible) {
 		this.annualDeductible = deductible;
 	}
-	
-	public void setAdditionalIncome(int income) {	
+
+	public void setAdditionalIncome(int income) {
 		this.otherMonthlyIncome = income;
 	}
 	
@@ -76,7 +76,8 @@ public class Employee {
 	
 	public int getAnnualIncomeTax() {
 		
-		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
+		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari
+		// tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		
 		if (date.getYear() == yearJoined) {
@@ -85,6 +86,7 @@ public class Employee {
 			monthWorkingInYear = 12;
 		}
 		
-		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, spouseIdNumber.equals(""), childIdNumbers.size());
+		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear,
+				annualDeductible, spouseIdNumber.equals(""), childIdNumbers.size());
 	}
 }
