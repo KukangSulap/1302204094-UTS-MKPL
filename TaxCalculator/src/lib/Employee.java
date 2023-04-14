@@ -35,7 +35,6 @@ public class Employee {
 	 * (grade 1: 3.000.000 per bulan, grade 2: 5.000.000 per bulan, grade 3: 7.000.000 per bulan)
 	 * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
 	 */
-
 	public void setMonthlySalary(int grade) {
 		switch (grade) {
 			case 1:
@@ -56,11 +55,8 @@ public class Employee {
 		}
 	}
 
-	public void setAnnualDeductible(int deductible) {
+	public void setDeductibleDanAdditionalIncome(int deductible, int income) {
 		this.annualDeductible = deductible;
-	}
-
-	public void setAdditionalIncome(int income) {
 		this.otherMonthlyIncome = income;
 	}
 	
@@ -68,14 +64,14 @@ public class Employee {
 		this.spouseName = spouseName;
 		this.spouseIdNumber = idNumber;
 	}
-	
+
 	public void addChild(String childName, String childIdNumber) {
 		childNames.add(childName);
 		childIdNumbers.add(childIdNumber);
 	}
 	
 	public int getAnnualIncomeTax() {
-		
+
 		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari
 		// tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
